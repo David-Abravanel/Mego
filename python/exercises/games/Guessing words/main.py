@@ -16,6 +16,7 @@ def Regestrtion() -> tuple:
 
     return nameOfThePlayers, numOfPlayers, numOfWords
 
+
 def GetValidNumbers(num:str):
     while True:
         if(not num.isnumeric()):

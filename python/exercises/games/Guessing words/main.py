@@ -1,8 +1,8 @@
 import os
 import random as rnd
-from colorama import Style, Fore, Back, init
-from bidi.algorithm import get_display
-init(autoreset=True)
+# from colorama import Style, Fore, Back, init
+# from bidi.algorithm import get_display
+# init(autoreset=True)
 
 
 def Regestrtion() -> tuple:
@@ -106,10 +106,6 @@ def TheMainGame() -> None:
         PlayersScore = bonus(PlayersScore, PlayersNames, words[i - 1], hebrew_words[i - 1])
 
     print('The winer is ', PlayersNames[PlayersScore.index(max(PlayersScore))])
-
-
-
-    print()
 
 
 TheMainGame()

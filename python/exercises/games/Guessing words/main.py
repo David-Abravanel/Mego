@@ -25,7 +25,6 @@ def GetValidNumbers(num:str):
             return int(num)
 
 
-
 def ExtractingWords(numword: int) -> tuple:
     with open('words.txt', 'r+', encoding='utf-8') as file:
         content = file.read()

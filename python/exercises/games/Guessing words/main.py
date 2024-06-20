@@ -6,14 +6,23 @@ import random as rnd
 
 
 def Regestrtion() -> tuple:
-    numOfPlayers = int(
+
+    numOfPlayers = GetValidNumbers(
         input(" >> Registration:\nEnter the number of the players: "))
-    numOfWords = int(
+    numOfWords = GetValidNumbers(
         input("Enter the number of the words you want to play: "))
     nameOfThePlayers = [
         input(f" player {num + 1} enter your name: ") for num in range(numOfPlayers)]
 
     return nameOfThePlayers, numOfPlayers, numOfWords
+
+def GetValidNumbers(num:str):
+    while True:
+        if(not num.isnumeric()):
+            num = input('\nInvalid input:\n Enter a number\n\n   : ')
+        else:
+            return int(num)
+
 
 
 def ExtractingWords(numword: int) -> tuple:

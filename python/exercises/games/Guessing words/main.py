@@ -40,7 +40,7 @@ def ExtractingWords(numword: int) -> tuple:
     return english, hebrew
 
 
-def bonus(score: list, Names: list, english: str, hebrew: str) -> list:
+def Bonus(score: list, Names: list, english: str, hebrew: str) -> list:
     print('Bonus:\nTry to write the word in Hebrew.\n',len(hebrew.split())," Words ", len(hebrew), " Letters\n")
     for i in range(len(Names)):
         if input(f'Player {Names[i]}, what is the translation of the word {english}? ') == hebrew:
@@ -112,7 +112,7 @@ def TheMainGame() -> None:
             Display(PlayersNames, PlayersScore, word, i, namTotalWords)
             playerTourn = (playerTourn + 1) % numPlay
         
-        PlayersScore = bonus(PlayersScore, PlayersNames, words[i - 1], hebrew_words[i - 1])
+        PlayersScore = Bonus(PlayersScore, PlayersNames, words[i], hebrew_words[i])
 
     print('The winer is ', PlayersNames[PlayersScore.index(max(PlayersScore))])
 

@@ -90,14 +90,14 @@ def CheakLeterInWord(letter: str, wordHaide: str, wordDisplay: list) -> tuple:
 
 
 def TheMainGame() -> None:
-    PlayersNames, numPlay, namTotalWords = Regestrtion()
+    PlayersNames, numPlay, numTotalWords = Regestrtion()
     PlayersScore = [0] * numPlay
-    words, hebrew_words = ExtractingWords(namTotalWords)
+    words, hebrew_words = ExtractingWords(numTotalWords)
 
-    for i in range(namTotalWords):
+    for i in range(numTotalWords):
         word = ['* '] * len(words[i])
 
-        Display(PlayersNames, PlayersScore, word, i, namTotalWords)
+        Display(PlayersNames, PlayersScore, word, i, numTotalWords)
 
         playerTourn = 0
         while '* ' in word:
@@ -109,7 +109,7 @@ def TheMainGame() -> None:
                 PlayersScore[playerTourn] += gessesFound
                 # print(f'Player {PlayersNames[playerTourn]} you have successfully guessed a letter ')
 
-            Display(PlayersNames, PlayersScore, word, i, namTotalWords)
+            Display(PlayersNames, PlayersScore, word, i, numTotalWords)
             playerTourn = (playerTourn + 1) % numPlay
         
         PlayersScore = Bonus(PlayersScore, PlayersNames, words[i], hebrew_words[i])

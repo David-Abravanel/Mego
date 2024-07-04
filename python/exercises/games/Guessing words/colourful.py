@@ -1,5 +1,6 @@
 import os
-import random as rnd
+import pyautogui
+import random as rnd 
 from colorama import Style, Fore, Back, init
 # from bidi.algorithm import get_display
 init(autoreset=True)
@@ -21,7 +22,7 @@ def regestrtion() -> tuple:
 def get_valid_number(num:str) -> int:
     while True:
         if(not num.isnumeric()):
-            num = input('\nInvalid input:\n Enter a number\n\n   : ')
+            num = input('\nInvalid input:\n\n Enter a number  : ')
         else:
             return int(num)
 
@@ -44,11 +45,14 @@ def extracting_words(num_word: int) -> tuple:
 
 
 def Bonus(score: list, Names: list, english_words: str, hebrew_words: str) -> list:
+    switch_language()
+
     print(Fore.MAGENTA+'Bonus:\nwrite the word in hebrew.\n',len(hebrew_words.split()),Fore.MAGENTA+" Words ", len(hebrew_words), Fore.MAGENTA+" Letters\n")
     for i in range(len(Names)):
-        if input(f'Player {Names[i]}, translate this word in hebrew? ') == hebrew_words:
+        if input(f'Players {Names[i]}, translate this word in hebrew? ') == hebrew_words:
             score[i] += len(hebrew_words)
 
+    switch_language()
     return score
 
 
@@ -56,13 +60,13 @@ def Bonus(score: list, Names: list, english_words: str, hebrew_words: str) -> li
 def Display(name: list, score: list, word: list, this_word: int, num_of_words: int,letters_found) -> None:
     os.system('cls' if os.name == 'nt' else 'clear')
     print(Fore.MAGENTA+'You have guessed '+Style.RESET_ALL+f'{this_word}'+Fore.MAGENTA+' words out of '+Style.RESET_ALL+f'{num_of_words}'+Fore.MAGENTA+' words\n'+Style.RESET_ALL)
-    print(">> Playeras' scores: ")
+    print(">> Player scores: ")
     # can do with zip
     for i in range(len(name)):
         print(f":: {name[i]} = {score[i]}")
     print()
 
-    print(Fore.GREEN+f"{letters_found}","Letters have been found: ", end="")
+    print(Fore.GREEN+f"{letters_found}","Letters out of",Fore.GREEN+f"{len(word)}","have been found: ", end="")
     for j in range(len(word)):
         if(word[j] == '* '):
             print(Fore.RED+word[j], end="")
@@ -101,6 +105,12 @@ def cheak_leter_in_word(letter: str, haide_word: str, display_word: list,player:
             status = True
 
     return display_word, status, corect_gesses
+
+
+def switch_language():
+    pyautogui.keyDown('alt')
+    pyautogui.press('shift')
+    pyautogui.keyUp('alt')
 
 
 # Do to meny staff...

@@ -47,7 +47,7 @@ class Players:
     def _get_valid_number(self, message: str) -> int:
         number = input(message)
         while True:
-            if not number.isnumeric():
+            if not number.isnumeric() or int(number) < 1:
                 number = input(
                     '\nError -> Not a Number:\n For the number of players,\n you must type a number greater than 0:')
             else:
